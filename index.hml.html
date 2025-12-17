@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familiensofa | Elternberatung & Gewaltfreie Kommunikation</title>
+    <meta name="description" content="Familiensofa – Professionelle Elternberatung von Melina Sanchez. Unterstützung für gewaltfreie Kommunikation und ein harmonisches Familienleben.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FDF8F3;
+            --color-sage: #7D9A78;
+            --color-sage-light: #A8C4A2;
+            --color-sage-dark: #5B7356;
+            --color-terracotta: #C17F59;
+            --color-terracotta-light: #E8A882;
+            --color-warm-gray: #6B6560;
+            --color-dark: #3D3835;
+            --color-white: #FFFFFF;
+            
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Nunito', -apple-system, sans-serif;
+            
+            --shadow-soft: 0 4px 20px rgba(61, 56, 53, 0.08);
+            --shadow-medium: 0 8px 30px rgba(61, 56, 53, 0.12);
+            --radius-soft: 24px;
+            --radius-round: 50px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-dark);
+            line-height: 1.7;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        
+        /* Decorative Background */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        
+        .bg-circle-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--color-sage-light) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .bg-circle-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--color-terracotta-light) 0%, transparent 70%);
+            bottom: 10%;
+            left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--color-sage-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-white);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-warm-gray);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-terracotta);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-sage-dark);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--color-dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .hero-text {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-round);
+            font-size: 0.85rem;
+            color: var(--color-sage-dark);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .hero-badge::before {
+            content: '🌱';
+        }
+        
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 span {
+            color: var(--color-sage);
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--color-warm-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-round);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--color-sage);
+            color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(125, 154, 120, 0.4);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-sage-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(125, 154, 120, 0.5);
+        }
+        
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-dark);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-cream);
+            transform: translateY(-2px);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .hero-image-main {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-sage) 100%);
+            border-radius: var(--radius-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-illustration {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+        }
+        
+        .hero-illustration svg {
+            width: 200px;
+            height: 200px;
+            opacity: 0.9;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: var(--color-white);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-medium);
+            animation: floatCard 3s ease-in-out infinite;
+        }
+        
+        .floating-card-1 {
+            top: 10%;
+            right: -20px;
+            animation-delay: 0s;
+        }
+        
+        .floating-card-2 {
+            bottom: 15%;
+            left: -30px;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .floating-card-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: var(--color-sage-light);
+            color: var(--color-sage-dark);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-round);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            color: var(--color-warm-gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Services/Angebote */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: var(--radius-soft);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-sage);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-sage) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+        
+        .service-card p {
+            color: var(--color-warm-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-sage-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+        
+        .service-link:hover {
+            gap: 0.75rem;
+        }
+        
+        /* GFK Section */
+        .gfk-section {
+            background: var(--color-white);
+            border-radius: var(--radius-soft);
+            padding: 4rem;
+            margin: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .gfk-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .gfk-steps {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .gfk-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-terracotta-light) 0%, var(--color-terracotta) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+        }
+        
+        .step-content p {
+            color: var(--color-warm-gray);
+            font-size: 0.95rem;
+        }
+        
+        .gfk-image {
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-sage-light) 100%);
+            border-radius: var(--radius-soft);
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        .gfk-quote {
+            text-align: center;
+            max-width: 350px;
+        }
+        
+        .gfk-quote blockquote {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .gfk-quote cite {
+            color: var(--color-sage-dark);
+            font-style: normal;
+            font-weight: 600;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: var(--radius-soft);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 6rem;
+            color: var(--color-sage-light);
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            line-height: 1;
+            opacity: 0.5;
+        }
+        
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            color: var(--color-warm-gray);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-sage) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .author-info strong {
+            display: block;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+        
+        .author-info span {
+            font-size: 0.9rem;
+            color: var(--color-warm-gray);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-sage-dark) 100%);
+            border-radius: var(--radius-soft);
+            padding: 4rem;
+            margin: 2rem;
+            color: var(--color-white);
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: var(--color-white);
+        }
+        
+        .contact-section .section-description {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-white);
+        }
+        
+        .contact-text {
+            text-align: left;
+        }
+        
+        .contact-text span {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .contact-text strong {
+            font-size: 1.1rem;
+        }
+        
+        .contact-text a {
+            color: var(--color-white);
+            text-decoration: none;
+        }
+        
+        .contact-text a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--color-warm-gray);
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--color-sage);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .btn-group {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+            
+            .hero-image-main {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            
+            .gfk-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .gfk-image {
+                order: -1;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .gfk-section,
+            .contact-section {
+                margin: 1rem;
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .floating-card {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Background -->
+    <div class="bg-decoration">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+            Familiensofa
+        </a>
+        <ul class="nav-links">
+            <li><a href="#angebote">Angebote</a></li>
+            <li><a href="#gfk">Gewaltfreie Kommunikation</a></li>
+            <li><a href="#erfahrungen">Erfahrungen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">Beratung mit Herz</div>
+                <h1>Gemeinsam zu einem <span>harmonischen</span> Familienleben</h1>
+                <p class="hero-description">
+                    Ich bin Melina Sanchez und begleite Eltern auf dem Weg zu liebevoller, 
+                    gewaltfreier Kommunikation. Gemeinsam lösen wir Konflikte 
+                    und bauen eine tiefere Verbindung zu Ihren Kindern auf.
+                </p>
+                <div class="btn-group">
+                    <a href="#kontakt" class="btn btn-primary">
+                        Erstgespräch vereinbaren
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#angebote" class="btn btn-secondary">Mehr erfahren</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-main">
+                    <div class="hero-illustration">
+                        <svg viewBox="0 0 200 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="60" r="35" opacity="0.9"/>
+                            <ellipse cx="100" cy="150" rx="55" ry="40" opacity="0.7"/>
+                            <circle cx="60" cy="100" r="20" opacity="0.8"/>
+                            <circle cx="140" cy="100" r="20" opacity="0.8"/>
+                            <path d="M70 85 Q100 70 130 85" stroke="currentColor" stroke-width="3" fill="none" opacity="0.6"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="floating-card floating-card-1">
+                    <div class="floating-card-icon">💚</div>
+                    <div class="floating-card-text">Einfühlsam</div>
+                </div>
+                <div class="floating-card floating-card-2">
+                    <div class="floating-card-icon">🤝</div>
+                    <div class="floating-card-text">Verbindend</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Angebote Section -->
+    <section id="angebote">
+        <div class="section-header">
+            <span class="section-badge">Meine Angebote</span>
+            <h2>Unterstützung für jede Situation</h2>
+            <p class="section-description">
+                Individuelle Beratung, die auf Ihre Bedürfnisse zugeschnitten ist – 
+                ob Einzelgespräch, Paarberatung oder Gruppenworkshop.
+            </p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">👨‍👩‍👧</div>
+                <h3>Elternberatung</h3>
+                <p>
+                    Individuelle Begleitung bei Erziehungsfragen, Konflikten im Familienalltag 
+                    und der Entwicklung eines liebevollen Erziehungsstils.
+                </p>
+                <a href="#kontakt" class="service-link">
+                    Termin anfragen
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3>GFK-Workshops</h3>
+                <p>
+                    Lernen Sie die Grundlagen der Gewaltfreien Kommunikation in praxisnahen 
+                    Workshops – für Eltern, Paare und Familien.
+                </p>
+                <a href="#kontakt" class="service-link">
+                    Mehr erfahren
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌟</div>
+                <h3>Online-Beratung</h3>
+                <p>
+                    Flexible Beratung von zu Hause aus – per Videocall oder Telefon. 
+                    Ideal für Eltern mit wenig Zeit oder weiter Anreise.
+                </p>
+                <a href="#kontakt" class="service-link">
+                    Jetzt starten
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GFK Section -->
+    <section id="gfk" class="gfk-section">
+        <div class="section-header">
+            <span class="section-badge">Gewaltfreie Kommunikation</span>
+            <h2>Die vier Schritte der GFK</h2>
+            <p class="section-description">
+                Nach Marshall B. Rosenberg – ein Weg zu echter Verbindung und Verständnis
+            </p>
+        </div>
+        
+        <div class="gfk-content">
+            <div class="gfk-steps">
+                <div class="gfk-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Beobachtung</h4>
+                        <p>Beschreiben Sie, was Sie sehen oder hören – ohne Bewertung oder Interpretation.</p>
+                    </div>
+                </div>
+                <div class="gfk-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Gefühl</h4>
+                        <p>Drücken Sie aus, wie Sie sich dabei fühlen – authentisch und verletzlich.</p>
+                    </div>
+                </div>
+                <div class="gfk-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Bedürfnis</h4>
+                        <p>Erkennen und benennen Sie das Bedürfnis, das hinter Ihrem Gefühl steht.</p>
+                    </div>
+                </div>
+                <div class="gfk-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Bitte</h4>
+                        <p>Formulieren Sie eine konkrete, erfüllbare Bitte – positiv und handlungsorientiert.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gfk-image">
+                <div class="gfk-quote">
+                    <blockquote>
+                        „Worte können Fenster sein oder Mauern."
+                    </blockquote>
+                    <cite>— Marshall B. Rosenberg</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="erfahrungen">
+        <div class="section-header">
+            <span class="section-badge">Erfahrungen</span>
+            <h2>Was Eltern sagen</h2>
+            <p class="section-description">
+                Echte Geschichten von Familien, die den Weg zu mehr Verbundenheit gefunden haben.
+            </p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    „Die Beratung hat unsere Familiedynamik komplett verändert. 
+                    Wir verstehen uns jetzt viel besser und können Konflikte lösen, 
+                    bevor sie eskalieren."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SK</div>
+                    <div class="author-info">
+                        <strong>Sandra K.</strong>
+                        <span>Mutter von zwei Kindern</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    „Endlich habe ich Werkzeuge an der Hand, um mit meinem 
+                    pubertierenden Sohn zu kommunizieren. Die GFK-Workshops 
+                    waren Gold wert!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MH</div>
+                    <div class="author-info">
+                        <strong>Michael H.</strong>
+                        <span>Vater eines Teenagers</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    „Die einfühlsame Art der Beratung hat mir geholfen, 
+                    meine eigenen Muster zu erkennen und einen neuen Weg 
+                    mit meinen Kindern einzuschlagen."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LM</div>
+                    <div class="author-info">
+                        <strong>Lisa M.</strong>
+                        <span>Alleinerziehende Mutter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="contact-section">
+        <span class="section-badge" style="background: rgba(255,255,255,0.2); color: white;">Kontakt</span>
+        <h2>Lassen Sie uns sprechen</h2>
+        <p class="section-description">
+            Der erste Schritt ist oft der schwierigste. Ich freue mich darauf, 
+            Sie kennenzulernen und gemeinsam herauszufinden, wie ich Sie und Ihre Familie unterstützen kann.
+        </p>
+        
+        <a href="mailto:melina1982@icloud.com" class="btn" style="background: white; color: var(--color-sage-dark);">
+            Erstgespräch vereinbaren
+        </a>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">
+                    <span>E-Mail</span>
+                    <strong><a href="mailto:melina1982@icloud.com">melina1982@icloud.com</a></strong>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">
+                    <span>Telefon</span>
+                    <strong><a href="tel:+41774080511">077 408 05 11</a></strong>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">
+                    <span>Standort</span>
+                    <strong>Ludwig-Schläfli-Weg 15, 3400 Burgdorf</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Familiensofa – Melina Sanchez. Mit 💚 erstellt für Familien.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="#">Impressum</a> · <a href="#">Datenschutz</a>
+        </p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .testimonial-card, .gfk-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
